@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Order } from './Order';
-import '../styles/OrderList.css';
+import '../styles/OrderList.scss';
 
 export class OrderList extends Component {
     componentDidMount() {
