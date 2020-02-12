@@ -1,4 +1,4 @@
-import { GET_ORDERS, SET_ORDERS } from './actionsTypes';
+import { GET_ORDERS, SET_ORDERS, SET_MERCHANT } from './actionsTypes';
 
 export const GET_ORDERS_ACTION_CREATOR = (merchantID) => {
     return {
@@ -14,6 +14,15 @@ export const SET_ORDERS_ACTION_CREATOR = (orders) => {
         type: SET_ORDERS,
         payload: {
             orders
+        }
+    }
+}
+
+export const SET_MERCHANT_ACTION_CREATOR = (merchantID) => {
+    return {
+        type: SET_MERCHANT,
+        payload: {
+            merchantID
         }
     }
 }

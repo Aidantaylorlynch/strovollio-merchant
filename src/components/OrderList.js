@@ -1,25 +1,45 @@
 import React, { Component } from 'react';
 import { Order } from './Order';
+import { Redirect } from 'react-router-dom';
+
 import '../styles/OrderList.scss';
 
 export class OrderList extends Component {
-    componentDidMount() {
-        this.props.getOrders()
+    async componentDidMount() {
+        if (this.props.merchantID) {
+            this.props.getOrders(this.props.merchantID)
+        }
+        try {
+            setInterval(() => {
+                console.log("fetching")
+                if (this.props.merchantID) {
+                    this.props.getOrders(this.props.merchantID)
+                }
+            }, 5000)
+        } catch (error) {
+            console.log("error setting interval", error)
+        }
     }
     render() {
-        return (
-            <div className="orderListContainer">
-                <div className="titleContainer">
-                    Strovollio Merchant
+        if (this.props.merchantID) {
+            return (
+                <div className="orderListContainer">
+                    <div className="titleContainer">
+                        Strovollio Merchant
+                    </div>
+                    <div className="ordersContainer">
+                        {this.props.orders && this.props.orders.map((order, index) => {
+                            return (
+                                <Order key={index} order={order}/>
+                            )
+                        })}
+                    </div>
                 </div>
-                <div className="ordersContainer">
-                    {this.props.orders.length > 0 && this.props.orders.map((order, index) => {
-                        return (
-                            <Order key={index} order={order}/>
-                        )
-                    })}
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <Redirect to="/" />
+            )
+        }
     }
 }

@@ -1,7 +1,7 @@
-import { SET_ORDERS } from './actionsTypes';
+import { SET_ORDERS, SET_MERCHANT } from './actionsTypes';
 
 const initialState = {
-    merchantID: 1,
+    merchantID: null,
     orders: []
 }
 
@@ -11,6 +11,11 @@ export const reducer = (state=initialState, action) => {
             return {
                 ...state,
                 orders: action.payload.orders
+            }
+        case SET_MERCHANT:
+            return {
+                ...state,
+                merchantID: action.payload.merchantID
             }
         default:
             return state
