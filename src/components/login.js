@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Button } from 'evergreen-ui';
 import { Link } from 'react-router-dom';
+import '../styles/Login.scss';
 
 export class Login extends Component {
     constructor(props) {
@@ -11,15 +12,24 @@ export class Login extends Component {
     }
     render() {
         return (
-            <div className="">
-                Login
-                <TextInput onChange={(e) => {
-                    this.setState({ merchantID: e.target.value });
-                    console.log(this.state)
-                }} placeholder="Merchant ID"></TextInput>
-                <Button onClick={() => {
-                    this.props.setMerchant(this.state.merchantID);
-                }}><Link to="/orders" style={{textDecoration: 'none'}}>Login</Link></Button>
+            <div className="loginContainer">
+                <div className="five-pix-pad">
+                    {this.props.title}
+                </div>
+                <div className="five-pix-pad">
+                    <TextInput onChange={(e) => {
+                        this.setState({ merchantID: e.target.value });
+                        console.log(this.state)
+                    }} placeholder="Merchant ID"></TextInput>
+                </div>
+                <div className="five-pix-pad">
+                    <TextInput placeholder="Password" type="password"></TextInput>
+                </div>
+                <div className="five-pix-pad">
+                    <Button appearance="minimal" onClick={() => {
+                        this.props.setMerchant(this.state.merchantID);
+                    }}><Link to="/orders" style={{textDecoration: 'none'}}>Login</Link></Button>
+                </div>
             </div>
         )
     }

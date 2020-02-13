@@ -1,4 +1,4 @@
-.orderListContainer {
+.orderDetailsContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,19 +6,17 @@
     width: 100vw;
     height: 100vh;
 }
-.titleContainer {
+.orderDetailsHeader {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 10vh;   
+    width: 100%;
 }
-.ordersContainer {
+.orderDetailsBody {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
-    width: 100vw;
-    height: 90vh;
+    width: 100%;
 }

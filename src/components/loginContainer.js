@@ -4,7 +4,7 @@ import { SET_MERCHANT_ACTION_CREATOR } from '../store/actions';
 
 const mapStateToProps = (state) => {
     return {
-
+        title: state.appTitle
     }
 }
 

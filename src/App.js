@@ -3,6 +3,7 @@ import { OrderContainer } from './components/OrderContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import './styles/App.scss';
 import { LoginContainer } from './components/loginContainer';
+import { OrderDetailsContainer } from './components/OrderDetailsContainer';
 
 export class App extends Component {
 	render() {
@@ -14,6 +15,9 @@ export class App extends Component {
 					</Route>
 					<Route path="/orders">
 						<OrderContainer />
+					</Route>
+					<Route path="/orderdetails">
+						<OrderDetailsContainer />
 					</Route>
 				</Switch>
 			</BrowserRouter>

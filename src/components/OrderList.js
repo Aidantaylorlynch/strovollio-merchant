@@ -30,7 +30,7 @@ export class OrderList extends Component {
                     <div className="ordersContainer">
                         {this.props.orders && this.props.orders.map((order, index) => {
                             return (
-                                <Order key={index} order={order}/>
+                                <Order key={index} setSelectedOrder={this.props.setSelectedOrder} order={order}/>
                             )
                         })}
                     </div>
