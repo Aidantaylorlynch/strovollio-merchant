@@ -5,21 +5,37 @@ import { Redirect } from 'react-router-dom';
 import '../styles/OrderList.scss';
 
 export class OrderList extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            intervalID: null
+        }
+    }
+
     async componentDidMount() {
         if (this.props.merchantID) {
             this.props.getOrders(this.props.merchantID)
         }
         try {
-            setInterval(() => {
+            const setIntervalID = setInterval(() => {
                 console.log("fetching")
                 if (this.props.merchantID) {
                     this.props.getOrders(this.props.merchantID)
                 }
             }, 5000)
+            this.setState({ intervalID: setIntervalID })
         } catch (error) {
             console.log("error setting interval", error)
         }
     }
+
+    componentWillUnmount() {
+        if (this.state.intervalID !== null) {
+            console.log("clearing interval")
+            clearInterval(this.state.intervalID);
+        }
+    }
+
     render() {
         if (this.props.merchantID) {
             return (

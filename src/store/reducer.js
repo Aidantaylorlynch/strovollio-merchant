@@ -4,6 +4,7 @@ const initialState = {
     appTitle: "Strovollio Merchant",
     merchantID: null,
     orders: [],
+    menuItems: [],
     selectedOrder: null
 }
 
