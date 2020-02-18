@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button } from 'evergreen-ui';
 import { Link } from 'react-router-dom';
 
-import '../styles/OrderDetailsContainer.scss';
+import '../styles/OrderDetailsContainer.css';
 
 export class OrderDetails extends Component {
     render() {

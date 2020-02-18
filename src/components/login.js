@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { TextInput, Button } from 'evergreen-ui';
 import { Link } from 'react-router-dom';
-import '../styles/Login.scss';
+import '../styles/Login.css';
 
 export class Login extends Component {
     constructor(props) {

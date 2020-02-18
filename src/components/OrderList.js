@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Order } from './Order';
 import { Redirect } from 'react-router-dom';
 
-import '../styles/OrderList.scss';
+import '../styles/OrderList.css';
 
 export class OrderList extends Component {
     constructor(props) {

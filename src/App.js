@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { OrderContainer } from './components/OrderContainer';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import './styles/App.scss';
+import './styles/App.css';
 import { LoginContainer } from './components/loginContainer';
 import { OrderDetailsContainer } from './components/OrderDetailsContainer';
 

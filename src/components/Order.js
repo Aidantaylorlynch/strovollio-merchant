@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../styles/Order.scss';
+import '../styles/Order.css';
 
 export class Order extends Component {
     render() {
