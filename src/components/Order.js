@@ -8,7 +8,7 @@ export class Order extends Component {
         return (
             <Link onClick={() => {
                 this.props.setSelectedOrder(this.props.order)
-            }} to="/orderdetails" style={{ textDecoration: 'None' }}>
+            }} to="/orderdetails" style={{ textDecoration: 'none' }}>
                 <div className="orderContainer five-pix-pad">
                     <div className="orderHeader five-pix-pad">
                         Order
