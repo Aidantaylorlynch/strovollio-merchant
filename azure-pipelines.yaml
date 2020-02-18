@@ -1,0 +1,56 @@
+trigger:
+  - master
+
+variables:
+  REACT_APP_BASE_URL: https://strovollio.azurewebsites.net/api
+
+pool:
+  vmImage: 'windows-2019'  
+
+steps:
+  - task: Npm@1
+    displayName: 'npm install'
+    inputs:
+      verbose: false
+
+  - task: Npm@1
+    displayName: 'npm build'
+    inputs:
+      command: custom
+      verbose: false
+      customCommand: 'run build'
+
+  - task: CopyFiles@2
+    inputs:
+      SourceFolder: './build'
+      Contents: '**'
+      TargetFolder: '$(Build.ArtifactStagingDirectory)'
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'build'
+      publishLocation: 'Container'
+
+  - task: DownloadBuildArtifacts@0
+    inputs:
+      ArtifactName: 'build'
+      downloadPath: '$(System.ArtifactsDirectory)'
+
+  - task: AzureCLI@1
+    displayName: 'Azure CLI '
+    inputs:
+      azureSubscription: strovollio
+      scriptLocation: inlineScript
+      inlineScript: 'az storage blob delete-batch --source $web --pattern * --connection-string DefaultEndpointsProtocol=https;AccountName=strovolliomerchant;AccountKey=xVQ3jGQdAp/UmPUgAVTMUJjwFSgRqUiJPwGMI/39Q3GueER7J0Y38nrELabKuzjCkdk13tqltMEnYV2AlnBE9Q==;EndpointSuffix=core.windows.net'
+        
+
+  - task: AzureFileCopy@3
+    displayName: Copy files to Azure blob storage (for test)
+    inputs:
+      azureSubscription: strovollio
+      storage: strovolliomerchant
+      SourcePath: '$(System.ArtifactsDirectory)/build'
+      Destination: AzureBlob
+      ContainerName: $web
+      CleanTargetBeforeCopy: true
