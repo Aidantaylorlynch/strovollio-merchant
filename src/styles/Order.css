@@ -1,0 +1,25 @@
+.orderContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+.orderContainer:hover {
+    background-color: rgb(236, 236, 236);
+}
+.orderHeader {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.orderBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.five-pix-pad {
+    padding: 5px;
+}
